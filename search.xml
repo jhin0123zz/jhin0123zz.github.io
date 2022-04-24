@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>My New Post</title>
+    <url>/2021/10/22/wenzhang3/</url>
+    <content><![CDATA[<h1 id="once"><a href="#once" class="headerlink" title="once"></a>once</h1><h2 id="置顶文章"><a href="#置顶文章" class="headerlink" title="置顶文章"></a>置顶文章</h2><p>  解放台湾,指日可待<br>  <img src="/image/5c59eabfab66f38ddf63c6d45071bcd3a3f87e990e7b26670.JPG" alt="ppt">
+  </p>
+]]></content>
+      <tags>
+        <tag>acticle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My New Post</title>
+    <url>/2021/10/22/wenzhang2/</url>
+    <content><![CDATA[<h1 id="once"><a href="#once" class="headerlink" title="once"></a>once</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>  周的第一篇文章,简单说一下,搭建花了三天,报错无数次,主题还没学着怎么弄,任重而道远
+  </p>
+]]></content>
+      <tags>
+        <tag>acticle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My New Post</title>
+    <url>/2021/10/22/wenzhang2%20-%20%E5%89%AF%E6%9C%AC/</url>
+    <content><![CDATA[<h1 id="two"><a href="#two" class="headerlink" title="two"></a>two</h1><h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>  大概也是无聊得很,由重新做起了这个,博客算起来一年没搞了,手生得很,现在重新开始想起了写点东西上去,仅此而已
+  </p>
+]]></content>
+      <tags>
+        <tag>acticle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/10/22/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -17,25 +47,5 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>My New Post</title>
-    <url>/2021/10/22/wenzhang2/</url>
-    <content><![CDATA[<h1 id="once"><a href="#once" class="headerlink" title="once"></a>once</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>  周的第一篇文章,简单说一下,搭建花了三天,报错无数次,主题还没学着怎么弄,任重而道远
-  </p>
-]]></content>
-      <tags>
-        <tag>acticle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>My New Post</title>
-    <url>/2021/10/22/wenzhang3/</url>
-    <content><![CDATA[<h1 id="once"><a href="#once" class="headerlink" title="once"></a>once</h1><h2 id="置顶文章"><a href="#置顶文章" class="headerlink" title="置顶文章"></a>置顶文章</h2><p>  解放台湾,指日可待<br>  <img src="/image/5c59eabfab66f38ddf63c6d45071bcd3a3f87e990e7b26670.JPG" alt="ppt">
-  </p>
-]]></content>
-      <tags>
-        <tag>acticle</tag>
-      </tags>
   </entry>
 </search>
