@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -401,6 +401,209 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="two"><a href="#two" class="headerlink" title="two"></a>two</h1><h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>  大概也是无聊得很,由重新做起了这个,博客算起来一年没搞了,手生得很,现在重新开始想起了写点东西上去,仅此而已
   </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/22/%E7%94%B5%E6%A2%AF%E5%AE%9E%E9%AA%8C%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/ss.gif">
+      <meta itemprop="name" content="周">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jhin--博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | jhin--博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/22/%E7%94%B5%E6%A2%AF%E5%AE%9E%E9%AA%8C%E6%96%87%E4%BB%B6%E7%AE%80%E6%98%93%E7%89%88/" class="post-title-link" itemprop="url">电梯主函数代码,简易版</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-22 10:08:30" itemprop="dateCreated datePublished" datetime="2021-10-22T10:08:30+08:00">2021-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-28 21:40:44" itemprop="dateModified" datetime="2022-04-28T21:40:44+08:00">2022-04-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="four"><a href="#four" class="headerlink" title="four"></a>four</h1><h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><p>#include &lt;stdio.h&gt;<br>#include “stm32f10x.h”<br>#include “stm32f10x_it.h”<br>#include “./lcd/bsp_ili9341_lcd.h”<br>#include “key.h”<br>extern  void  init_wai();<br>void Delay(__IO  u32 nCount);<br>int  flog=1;<br>int  flog1=1;<br>int  flog2=1;<br>int   TIME=0;<br>int   KYECOUNT;</p>
+<p>int   dinlouwai;<br>int   dinlounei=0;<br>int   doutlou=1;<br>unsigned int  Time_count=1000;</p>
+<p>GPIO_InitTypeDef   GPIO_LED;                                    //¶¨Òå½á¹¹Ìå±äÁ¿<br>GPIO_InitTypeDef   GPIO_KEYout, GPIO_KEYin;</p>
+<p>int main(void)<br>{      </p>
+<pre><code>    char dispBuff[100];
+   char dispBuff1[100];
+    GPIO_InitTypeDef   GPIO_InitStructure_KEY;    
+    /* KEY ¶Ë¿Ú³õÊ¼»¯ */
+    GPIO_KEYout.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_11; 
+    GPIO_KEYout.GPIO_Mode = GPIO_Mode_Out_PP;             
+    GPIO_KEYout.GPIO_Speed = GPIO_Speed_50MHz;
+
+    GPIO_KEYin.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;    
+    GPIO_KEYin.GPIO_Mode = GPIO_Mode_IPU;
+    GPIO_KEYin.GPIO_Speed = GPIO_Speed_50MHz;    
+init_key();
+
+  SysTick_Config(SystemCoreClock/1000);
+    ILI9341_Init();                            //LCD ³õÊ¼»¯     
+    ILI9341_GramScan(6);    
+    LCD_SetFont(&amp;Font16x24);
+    LCD_SetColors(RED,WHITE);
+    ILI9341_Clear(0,0,LCD_X_LENGTH,LCD_Y_LENGTH);
+
+
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOC, ENABLE);    
+
+    GPIO_InitStructure_KEY.GPIO_Pin = GPIO_Pin_0; 
+    GPIO_InitStructure_KEY.GPIO_Mode = GPIO_Mode_IN_FLOATING;    
+    GPIO_Init(GPIOA, &amp;GPIO_InitStructure_KEY);    
+
+    GPIO_InitStructure_KEY.GPIO_Pin = GPIO_Pin_13; 
+    GPIO_InitStructure_KEY.GPIO_Mode = GPIO_Mode_IN_FLOATING;    
+    GPIO_Init(GPIOC, &amp;GPIO_InitStructure_KEY);    
+    sprintf(dispBuff,&quot;ÖÜÖ£ºì&quot;);    
+    ILI9341_DispString_EN_CH(40,40,dispBuff);    
+sprintf(dispBuff,&quot;1906100121&quot;);    
+    ILI9341_DispString_EN(40,60,dispBuff);        
+    
+    
+
+        
+  while ( 1 )
+        &#123; 
+            //sprintf(dispBuff,&quot;inlou:\t&quot;);                
+       // ILI9341_DispString_EN(40,80,dispBuff);    
+            sprintf(dispBuff,&quot;xianlou :%d &quot;,doutlou);    
+        ILI9341_DispString_EN(40,160,dispBuff);
+            
+            
+            
+            sprintf(dispBuff1,&quot;rulou: %d &quot;,dinlounei);    
+        ILI9341_DispString_EN(40,120,dispBuff1);    
+          switch(dinlounei)  
+            &#123;
+                case 1: if(dinlounei&gt;doutlou)  
+                        &#123;    
+                                        //Èç¹ûflog1=1±íÊ¾µçÌÝÕýÔÚÁ½¸öÂ¥²ãÖ®¼ä,flog1ÓÃ°´¼ü¿ØÖÆ
+                                        
+                                    doutlou++;
+                        &#125;
+                        else if(dinlounei&lt;doutlou)
+                                &#123;
+                          
+                                    doutlou--;
+                        &#125;
+                                else dinlounei=0;
+                                    break ;
+                
+                case 2: if(dinlounei&gt;doutlou)
+                        &#123;    
+                                    
+                                    doutlou++;
+                        &#125;
+                        else if(dinlounei&lt;doutlou)
+                                &#123;
+                          
+                                    doutlou--;
+                        &#125;
+                                else dinlounei=0;
+                                    break ;
+                
+                case 3: if(dinlounei&gt;doutlou)
+                        &#123;    
+                                    
+                                    
+                                    doutlou++;
+                        &#125;
+                        else if(dinlounei&lt;doutlou)
+                                &#123;
+                          
+                                    doutlou--;
+                        &#125;
+                                else dinlounei=0;
+                                    break ;
+                
+                case 4: if(dinlounei&gt;doutlou)
+                        &#123;    
+                                    
+                                    doutlou++;
+                        &#125;
+                        else if(dinlounei&lt;doutlou)
+                                &#123;
+                          
+                                    doutlou--;
+                        &#125;
+                                else dinlounei=0;
+                                    break ;
+                
+
+                default :  break;
+                
+            &#125;
+            if(dinlounei==0)
+            &#123;sprintf(dispBuff,&quot;开&quot;);    
+    ILI9341_DispString_EN_CH(20,60,dispBuff);    
+            &#125;
+            else 
+            &#123;sprintf(dispBuff,&quot;关&quot;);    
+    ILI9341_DispString_EN_CH(20,60,dispBuff);    
+            &#125;
+                scan_key();  //
+             
+    &#125;
+</code></pre>
+<p>}</p>
+<p>void Delay(__IO  uint32_t  nCount)                                                                         //???????<br>{<br>    for(; nCount != 0; nCount–);</p>
+<p>}</p>
 
       
     </div>
